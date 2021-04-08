@@ -1,4 +1,7 @@
-SRCS	=	
+SRCS	=	$(DIR)/int_list.c \
+			$(DIR)/args.c \
+			$(DIR)/operations.c \
+			$(DIR)/free.c
 
 DIR		=	./srcs
 
