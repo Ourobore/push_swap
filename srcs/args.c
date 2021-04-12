@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:27:51 by user42            #+#    #+#             */
-/*   Updated: 2021/04/08 10:37:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/12 10:44:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int			args_are_numeric(char *argv[])
 		{
 			if ((argv[i][j] < '0' || argv[i][j] > '9') && \
 				argv[i][j] != ' ' && argv[i][j] != '-')
-				return (0);
+			{
+				ft_putendl_fd("Error", 1);
+				exit(1);
+			}
 			j++;
 		}
 		i++;
@@ -43,7 +46,32 @@ t_int_list	*get_args(t_int_list *a, char *argv[])
 		a = atoi_arg(a, argv[i]);
 		i++;
 	}
+	if (!no_duplicates(a))
+	{
+		ft_putendl_fd("Error", 1);
+		free_and_exit(a, NULL, 5);
+	}
 	return (a);
+}
+
+int			no_duplicates(t_int_list *a)
+{
+	t_int_list	*tmp;
+	t_int_list	*verif;
+
+	tmp = a;
+	while (tmp)
+	{
+		verif = tmp->next;
+		while (verif)
+		{
+			if (verif->data == tmp->data)
+				return (0);
+			verif = verif->next;
+		}
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
 t_int_list	*atoi_arg(t_int_list *a, char *arg)

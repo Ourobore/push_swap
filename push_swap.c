@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 09:46:58 by lchapren          #+#    #+#             */
-/*   Updated: 2021/04/12 10:47:52 by user42           ###   ########.fr       */
+/*   Created: 2021/04/09 17:11:26 by user42            #+#    #+#             */
+/*   Updated: 2021/04/12 10:41:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **alst, t_list *new)
+int	main(int argc, char *argv[])
 {
-	t_list	*tmp;
-
-	if (!alst)
-		return ;
-	if (!*alst)
-	{
-		*alst = new;
-		return ;
-	}
-	tmp = *alst;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
+	(void)argc;
+	(void)argv;
+	write(1, "ra\n", 3);
+	//write(1, "rrr\n", 4);
+	write(1, "pa\n\0", 4);
+	//write(1, "\0", 1);
 }

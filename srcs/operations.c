@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:43:23 by user42            #+#    #+#             */
-/*   Updated: 2021/04/08 17:29:52 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/12 10:49:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	call_operation(t_int_list **a, t_int_list **b, char *operation)
+int		call_operation(t_int_list **a, t_int_list **b, char *operation)
 {
 	if (ft_strcmp(operation, "sa") == 0)
 		swap_list(a);
@@ -31,13 +31,11 @@ void	call_operation(t_int_list **a, t_int_list **b, char *operation)
 	else if (ft_strcmp(operation, "rrb") == 0)
 		rotate_list(b, 1);
 	else if (call_double_operation(a, b, operation) == 0)
-	{
-		ft_putendl_fd("Error", 1);
-		free_and_exit(*a, *b, 4);
-	}
+		return (1);
+	return (0);
 }
 
-int	call_double_operation(t_int_list **a, t_int_list **b, char *operation)
+int		call_double_operation(t_int_list **a, t_int_list **b, char *operation)
 {
 	if (ft_strcmp(operation, "ss") == 0)
 	{
@@ -63,7 +61,7 @@ int	call_double_operation(t_int_list **a, t_int_list **b, char *operation)
 void	swap_list(t_int_list **head)
 {
 	t_int_list	*tmp;
-	
+
 	if (get_length_int_list(*head) <= 1)
 		return ;
 	tmp = *head;
@@ -76,7 +74,7 @@ void	push_list(t_int_list **head_1, t_int_list **head_2)
 {
 	t_int_list	*old_head_1;
 	t_int_list	*old_head_2;
-	
+
 	if (get_length_int_list(*head_1) == 0)
 		return ;
 	old_head_1 = *head_1;
@@ -99,7 +97,7 @@ void	rotate_list(t_int_list **head, int mode)
 		new_end = *head;
 		*head = (*head)->next;
 		while (tmp->next)
-			tmp= tmp->next;
+			tmp = tmp->next;
 		tmp->next = new_end;
 		new_end->next = NULL;
 	}

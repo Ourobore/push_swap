@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:02:22 by user42            #+#    #+#             */
-/*   Updated: 2021/04/08 11:13:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/12 10:48:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			get_length_int_list(t_int_list *head)
 	return (length);
 }
 
-void	print_list(t_int_list *head, char *s)
+void		print_list(t_int_list *head, char *s)
 {
 	t_int_list	*tmp;
 

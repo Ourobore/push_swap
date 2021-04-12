@@ -39,6 +39,7 @@ SRCS	= $(DIR)/ft_atoi.c \
 			$(DIR)/ft_lstadd_back_bonus.c \
 			$(DIR)/ft_lstdelone_bonus.c \
 			$(DIR)/ft_lstclear_bonus.c \
+			$(DIR)/ft_lstfree.c \
 			$(DIR)/ft_lstiter_bonus.c \
 			$(DIR)/ft_lstmap_bonus.c \
 			$(DIR)/free_double_array.c \
