@@ -40,7 +40,7 @@ clean	:
 
 fclean	:	clean
 			@make fclean -C ./libft
-			rm -rf $(NAME)
+			rm -rf $(NAME) checker
 
 re		:	fclean all
 

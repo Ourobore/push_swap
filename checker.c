@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:53:52 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 10:52:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/14 10:32:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int argc, char *argv[])
 	a = get_args(a, argv);
 	operations = read_operations();
 	exec_operations(&a, &b, operations);
-	sorted = is_sorted(a);
+	sorted = is_sorted(a, 0);
 	if (!sorted || get_length_int_list(b) != 0)
 	{
 		ft_putendl_fd("KO", 1);
@@ -75,7 +75,7 @@ void	exec_operations(t_int_list **a, t_int_list **b, t_list *operations)
 	tmp = operations;
 	while (tmp)
 	{
-		error = call_operation(a, b, (char *)tmp->content);
+		error = call_operation(a, b, (char *)tmp->content, 0);
 		if (error)
 		{
 			ft_putendl_fd("Error", 1);
@@ -84,21 +84,4 @@ void	exec_operations(t_int_list **a, t_int_list **b, t_list *operations)
 		}
 		tmp = tmp->next;
 	}
-}
-
-int		is_sorted(t_int_list *a)
-{
-	int			max;
-	t_int_list	*tmp;
-
-	tmp = a->next;
-	max = a->data;
-	while (tmp)
-	{
-		if (max > tmp->data)
-			return (0);
-		max = tmp->data;
-		tmp = tmp->next;
-	}
-	return (1);
 }

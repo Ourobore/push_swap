@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:43:23 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 10:49:41 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/14 10:40:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int		call_operation(t_int_list **a, t_int_list **b, char *operation)
+int		call_operation(t_int_list **a, t_int_list **b, char *operation, int m)
 {
 	if (ft_strcmp(operation, "sa") == 0)
 		swap_list(a);
@@ -32,6 +32,8 @@ int		call_operation(t_int_list **a, t_int_list **b, char *operation)
 		rotate_list(b, 1);
 	else if (call_double_operation(a, b, operation) == 0)
 		return (1);
+	if (m == 1)
+		ft_putendl_fd(operation, 1);
 	return (0);
 }
 

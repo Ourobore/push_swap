@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:49:50 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 10:46:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/14 10:39:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct			s_int_list
 */
 t_list	*read_operations(void);
 void	exec_operations(t_int_list **a, t_int_list **b, t_list *operations);
-int		is_sorted(t_int_list *a);
+int		is_sorted(t_int_list *a, int mode);
 
 /*
 ** int_list operations functions
@@ -38,7 +38,7 @@ int		is_sorted(t_int_list *a);
 void	swap_list(t_int_list **head);
 void	push_list(t_int_list **head_1, t_int_list **head_2);
 void	rotate_list(t_int_list **head, int mode);
-int		call_operation(t_int_list **a, t_int_list **b, char *operation);
+int		call_operation(t_int_list **a, t_int_list **b, char *operation, int m);
 int		call_double_operation(t_int_list **a, t_int_list **b, char *operation);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:02:22 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 10:48:36 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/13 10:08:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,25 @@ void		print_list(t_int_list *head, char *s)
 		write(1, "\n", 1);
 		tmp = tmp->next;
 	}
+}
+
+int			is_sorted(t_int_list *head, int mode)
+{
+	t_int_list	*tmp;
+	int			previous;
+
+	if (!head)
+		return (1);
+	tmp = head->next;
+	previous = head->data;
+	while (tmp)
+	{
+		if (mode == 0 && tmp->data < previous)
+			return (0);
+		else if (mode == 1 && tmp->data > previous)
+			return (0);
+		previous = tmp->data;
+		tmp = tmp->next;
+	}
+	return (1);
 }
