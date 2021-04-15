@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:43:23 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 10:40:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/15 18:24:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	swap_list(t_int_list **head)
 	*head = (*head)->next;
 	tmp->next = (*head)->next;
 	(*head)->next = tmp;
+	tmp->previous = *head;
+	(*head)->previous = NULL;
 }
 
 void	push_list(t_int_list **head_1, t_int_list **head_2)
@@ -79,11 +81,20 @@ void	push_list(t_int_list **head_1, t_int_list **head_2)
 
 	if (get_length_int_list(*head_1) == 0)
 		return ;
+	
 	old_head_1 = *head_1;
 	old_head_2 = *head_2;
-	*head_1 = old_head_1->next;
-	old_head_1->next = old_head_2;
+	if ((*head_1)->next)
+	{
+		*head_1 = (*head_1)->next;
+		(*head_1)->previous = NULL;
+	}
+	else
+		*head_1 = NULL;
 	*head_2 = old_head_1;
+	if (old_head_2)
+		old_head_2->previous = *head_2;
+	(*head_2)->next = old_head_2;
 }
 
 void	rotate_list(t_int_list **head, int mode)
@@ -98,9 +109,11 @@ void	rotate_list(t_int_list **head, int mode)
 	{
 		new_end = *head;
 		*head = (*head)->next;
+		(*head)->previous = NULL;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new_end;
+		new_end->previous = tmp;
 		new_end->next = NULL;
 	}
 	if (mode == 1)
@@ -109,6 +122,7 @@ void	rotate_list(t_int_list **head, int mode)
 			*head = (*head)->next;
 		new_end = *head;
 		*head = (*head)->next;
+		(*head)->previous = NULL;
 		(*head)->next = tmp;
 		new_end->next = NULL;
 	}

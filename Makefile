@@ -1,6 +1,9 @@
 SRCS	=	$(DIR)/int_list.c \
+			$(DIR)/int_list_utils.c \
 			$(DIR)/args.c \
 			$(DIR)/operations.c \
+			$(DIR)/sort_small.c \
+			$(DIR)/sort.c \
 			$(DIR)/free.c
 
 DIR		=	./srcs

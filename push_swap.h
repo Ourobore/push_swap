@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:49:50 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 10:39:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/15 17:02:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,15 @@
 typedef struct			s_int_list
 {
 	int					data;
+	struct s_int_list	*previous;
 	struct s_int_list	*next;
 }						t_int_list;
+
+/*
+** sorting functions
+*/
+void	sort_big(t_int_list **a, t_int_list **b, int *quantile, int nb_quantile);
+void	sort_small(t_int_list **a, t_int_list **b);
 
 /*
 ** checker functions
@@ -46,8 +53,12 @@ int		call_double_operation(t_int_list **a, t_int_list **b, char *operation);
 */
 t_int_list	*allocate_new_elem(t_int_list *new);
 t_int_list	*add_end_elem(t_int_list *head, t_int_list *new);
-int			get_length_int_list(t_int_list *head);
 void		print_list(t_int_list *head, char *s);
+int			get_length_int_list(t_int_list *head);
+t_int_list	*get_last_elem(t_int_list *head);
+t_int_list	*get_min_max(t_int_list *a, int mode);
+t_int_list	*get_closest(t_int_list *head, t_int_list *target, int mode);
+int			get_distance(t_int_list *head, t_int_list *target);
 
 /*
 ** args functions
