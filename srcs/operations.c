@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:43:23 by user42            #+#    #+#             */
-/*   Updated: 2021/04/16 13:38:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 13:59:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	swap_list(t_int_list **head)
 {
 	t_int_list	*tmp;
 
-	if (get_length_int_list(*head) <= 1)
+	if (!(*head) || !(*head)->next)
 		return ;
 	tmp = *head;
 	*head = (*head)->next;
@@ -80,7 +80,7 @@ void	push_list(t_int_list **head_1, t_int_list **head_2)
 	t_int_list	*old_head_1;
 	t_int_list	*old_head_2;
 
-	if (get_length_int_list(*head_1) == 0)
+	if (!(*head_1))
 		return ;
 	old_head_1 = *head_1;
 	old_head_2 = *head_2;
@@ -113,10 +113,9 @@ void	rotate_list(t_int_list **head, int mode)
 	if (mode == 0)
 	{
 		new_end = *head;
+		tmp = (*head)->last_elem;
 		*head = (*head)->next;
 		(*head)->previous = NULL;
-		while (tmp->next)
-			tmp = tmp->next;
 		tmp->next = new_end;
 		new_end->previous = tmp;
 		new_end->next = NULL;
@@ -124,7 +123,7 @@ void	rotate_list(t_int_list **head, int mode)
 	}
 	if (mode == 1)
 	{
-		while ((*head)->next->next)
+		while ((*head)->next->next) //to modify
 			*head = (*head)->next;
 		new_end = *head;
 		*head = (*head)->next;

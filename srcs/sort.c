@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:35:43 by user42            #+#    #+#             */
-/*   Updated: 2021/04/16 11:25:21 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 14:01:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	new_min_b(t_int_list **a, t_int_list **b, t_int_list *min_b, int len_b)
 {
 	if (get_distance(*b, min_b) < (len_b / 2) + 1)
-		while (get_last_elem(*b) != min_b)
+		while ((*b)->last_elem != min_b)
 			call_operation(NULL, b, "rb", 1);
 	else
-		while (get_last_elem(*b) != min_b)
+		while ((*b)->last_elem != min_b)
 			call_operation(NULL, b, "rrb", 1);
 	call_operation(a, b, "pb", 1);
 }

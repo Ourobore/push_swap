@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:11:26 by user42            #+#    #+#             */
-/*   Updated: 2021/04/16 13:37:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 14:02:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ static void	sorting_hub(t_int_list **a, t_int_list **b)
 	{
 		sorted_quantile = copy_int_list(*a);
 		sort_small(&sorted_quantile, b, 0);
-		if (!sorted_quantile || \
-			get_length_int_list(*a) != get_length_int_list(sorted_quantile))
-		{
-			if (sorted_quantile)
-				free_int_list(sorted_quantile);
-			free_and_exit(*a, *b, 3);
-		}
+		//if (!sorted_quantile || 
+		//	get_length_int_list(*a) != get_length_int_list(sorted_quantile))
+		//{
+		//	if (sorted_quantile)
+		//		free_int_list(sorted_quantile);
+		//	free_and_exit(*a, *b, 3);
+		//}
 		quantile = get_quantile(sorted_quantile, nb_quantile);
 		if (quantile)
 			sort_big(a, b, quantile, nb_quantile);
@@ -79,7 +79,7 @@ int			main(int argc, char *argv[])
 	a = NULL;
 	b = NULL;
 	a = get_args(a, argv);
-	if (get_length_int_list(a) == 0)
+	if (!a)
 		free_and_exit(a, b, 0);
 	sorting_hub(&a, &b);
 	free_and_exit(a, b, 0);

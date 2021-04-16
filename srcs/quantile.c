@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:50:29 by user42            #+#    #+#             */
-/*   Updated: 2021/04/16 10:59:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 13:43:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_int_list	*sort_for_quantile(t_int_list *a)
 	t_int_list	*tmp;
 	int			length_a;
 	int			min;
+	int			max_sorted;
 
 	sorted = NULL;
 	length_a = get_length_int_list(a);
@@ -38,10 +39,11 @@ t_int_list	*sort_for_quantile(t_int_list *a)
 	{
 		tmp = a;
 		min = get_min_max(a, 1)->data;
+		max_sorted = get_min_max(sorted, 1)->data;
 		while (tmp)
 		{
 			if (tmp->data < min && \
-				(!sorted || tmp->data > get_min_max(sorted, 1)->data))
+				(!sorted || tmp->data > max_sorted))
 				min = tmp->data;
 			tmp = tmp->next;
 		}
@@ -76,6 +78,6 @@ int			*get_quantile(t_int_list *sorted, int nb_quantile)
 			count++;
 		sorted = sorted->next;
 	}
-	quantile[i] = get_last_elem(sorted)->data;
+	quantile[i] = get_last_elem(sorted)->data; //here last
 	return (quantile);
 }
