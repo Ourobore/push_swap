@@ -6,15 +6,15 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 14:35:43 by user42            #+#    #+#             */
-/*   Updated: 2021/04/15 21:48:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 10:47:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	new_min_b(t_int_list **a, t_int_list **b, t_int_list *min_b, int length_b)
+void	new_min_b(t_int_list **a, t_int_list **b, t_int_list *min_b, int len_b)
 {
-	if (get_distance(*b, min_b) < (length_b / 2) + 1)
+	if (get_distance(*b, min_b) < (len_b / 2) + 1)
 		while (get_last_elem(*b) != min_b)
 			call_operation(NULL, b, "rb", 1);
 	else
@@ -23,9 +23,9 @@ static void	new_min_b(t_int_list **a, t_int_list **b, t_int_list *min_b, int len
 	call_operation(a, b, "pb", 1);
 }
 
-static void	new_max_b(t_int_list **a, t_int_list **b, t_int_list *max_b, int length_b)
+void	new_max_b(t_int_list **a, t_int_list **b, t_int_list *max_b, int len_b)
 {
-	if (get_distance(*b, max_b) < (length_b / 2) + 1)
+	if (get_distance(*b, max_b) < (len_b / 2) + 1)
 		while (*b != max_b)
 			call_operation(NULL, b, "rb", 1);
 	else
@@ -34,7 +34,7 @@ static void	new_max_b(t_int_list **a, t_int_list **b, t_int_list *max_b, int len
 	call_operation(a, b, "pb", 1);
 }
 
-static void	push_on_b(t_int_list **a, t_int_list **b)
+void	push_on_b(t_int_list **a, t_int_list **b)
 {
 	t_int_list	*min_b;
 	t_int_list	*max_b;
@@ -63,7 +63,7 @@ static void	push_on_b(t_int_list **a, t_int_list **b)
 	}
 }
 
-static void	push_on_a(t_int_list **a, t_int_list **b)
+void	push_on_a(t_int_list **a, t_int_list **b)
 {
 	t_int_list	*max_b;
 
@@ -78,7 +78,7 @@ static void	push_on_a(t_int_list **a, t_int_list **b)
 		call_operation(a, b, "pa", 1);
 }
 
-void		sort_big(t_int_list **a, t_int_list **b, int *quantile, int nb_quantile)
+void	sort_big(t_int_list **a, t_int_list **b, int *quantile, int nb_quantile)
 {
 	int			i;
 	int			closest;

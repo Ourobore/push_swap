@@ -6,16 +6,28 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:50:29 by user42            #+#    #+#             */
-/*   Updated: 2021/04/15 21:50:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 10:59:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+t_int_list	*sorted_new_elem(t_int_list **sorted, int new_value)
+{
+	t_int_list	*new;
+
+	new = NULL;
+	new = allocate_new_elem(new);
+	if (!new)
+		return (new);
+	new->data = new_value;
+	(*sorted) = add_end_elem(*sorted, new);
+	return (new);
+}
+
 t_int_list	*sort_for_quantile(t_int_list *a)
 {
 	t_int_list	*sorted;
-	t_int_list	*new;
 	t_int_list	*tmp;
 	int			length_a;
 	int			min;
@@ -33,17 +45,13 @@ t_int_list	*sort_for_quantile(t_int_list *a)
 				min = tmp->data;
 			tmp = tmp->next;
 		}
-		new = NULL;
-		new = allocate_new_elem(new);
-		if (!new)
+		if (!sorted_new_elem(&sorted, min))
 			return (sorted);
-		new->data = min;
-		sorted = add_end_elem(sorted, new);
 	}
 	return (sorted);
 }
 
-int		*get_quantile(t_int_list *sorted, int nb_quantile)
+int			*get_quantile(t_int_list *sorted, int nb_quantile)
 {
 	int	*quantile;
 	int	nb_elem;

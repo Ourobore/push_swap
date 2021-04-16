@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:11:26 by user42            #+#    #+#             */
-/*   Updated: 2021/04/15 22:11:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 10:50:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,13 @@ static void	sorting_hub(t_int_list **a, t_int_list **b)
 	else
 	{
 		sorted_quantile = sort_for_quantile(*a);
+		if (!sorted_quantile || \
+			get_length_int_list(*a) != get_length_int_list(sorted_quantile))
+		{
+			if (sorted_quantile)
+				free_int_list(sorted_quantile);
+			free_and_exit(*a, *b, 3);
+		}
 		quantile = get_quantile(sorted_quantile, nb_quantile);
 		if (quantile)
 			sort_big(a, b, quantile, nb_quantile);

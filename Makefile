@@ -6,6 +6,7 @@ SRCS	=	$(DIR)/int_list.c \
 			$(DIR)/operations.c \
 			$(DIR)/sort_small.c \
 			$(DIR)/sort.c \
+			$(DIR)/utils.c \
 			$(DIR)/free.c
 
 DIR		=	./srcs

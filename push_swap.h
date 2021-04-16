@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:49:50 by user42            #+#    #+#             */
-/*   Updated: 2021/04/15 21:52:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 09:43:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ typedef struct			s_int_list
 void		sort_big(t_int_list **a, t_int_list **b, int *quantile, int nb_quantile);
 void		sort_small(t_int_list **a, t_int_list **b);
 int			closest_elem(t_int_list *head, int max);
+int			get_distance(t_int_list *head, t_int_list *target);
+t_int_list	*get_closest(t_int_list *head, t_int_list *target, int mode);
+
+
 int			*get_quantile(t_int_list *sorted, int nb_quantile);
 t_int_list	*sort_for_quantile(t_int_list *a);
 

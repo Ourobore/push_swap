@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 09:55:44 by user42            #+#    #+#             */
-/*   Updated: 2021/04/15 14:51:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 11:04:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_int_list *get_last_elem(t_int_list *head)
+t_int_list	*get_last_elem(t_int_list *head)
 {
 	t_int_list	*tmp;
 

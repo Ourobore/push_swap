@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:43:23 by user42            #+#    #+#             */
-/*   Updated: 2021/04/15 18:24:26 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 10:18:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	push_list(t_int_list **head_1, t_int_list **head_2)
 
 	if (get_length_int_list(*head_1) == 0)
 		return ;
-	
 	old_head_1 = *head_1;
 	old_head_2 = *head_2;
 	if ((*head_1)->next)
