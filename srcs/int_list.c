@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:02:22 by user42            #+#    #+#             */
-/*   Updated: 2021/04/16 11:04:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 11:15:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_int_list	*allocate_new_elem(t_int_list *new)
 	new = malloc(sizeof(t_int_list) * 1);
 	if (!new)
 		return (NULL);
+	new->last_elem = new;
 	new->previous = NULL;
 	new->next = NULL;
 	return (new);
@@ -36,6 +37,7 @@ t_int_list	*add_end_elem(t_int_list *head, t_int_list *new)
 		tmp = tmp->next;
 	tmp->next = new;
 	new->previous = tmp;
+	head->last_elem = new;
 	return (head);
 }
 

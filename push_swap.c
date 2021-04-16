@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:11:26 by user42            #+#    #+#             */
-/*   Updated: 2021/04/16 10:50:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 13:37:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ static void	sorting_hub(t_int_list **a, t_int_list **b)
 	int			nb_quantile = (int)(get_length_int_list(*a) * 0.015) + 4;
 
 	if (get_length_int_list(*a) < 30)
-		sort_small(a, b);
+		sort_small(a, b, 1);
 	else
 	{
-		sorted_quantile = sort_for_quantile(*a);
+		sorted_quantile = copy_int_list(*a);
+		sort_small(&sorted_quantile, b, 0);
 		if (!sorted_quantile || \
 			get_length_int_list(*a) != get_length_int_list(sorted_quantile))
 		{
