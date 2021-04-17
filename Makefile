@@ -39,8 +39,8 @@ fsan	:	$(OBJS) push_swap.c checker.c
 			$(CC) $(CFLAGS) $(FSAN) push_swap.c $(OBJS) $(LIBFT) $(INCLUDE) -o $(NAME)
 			$(CC) $(CFLAGS) $(FSAN) checker.c $(OBJS) $(LIBFT) $(INCLUDE) -o checker
 
-leaks	:	$(NAME)
-			valgrind --tool=memcheck --track-origins=yes --leak-check=full --leak-resolution=high --show-reachable=yes ./$(NAME)
+#leaks	:	$(NAME)
+#			valgrind --tool=memcheck --track-origins=yes --leak-check=full --leak-resolution=high --show-reachable=yes ./$(NAME)
 
 clean	:
 			@make clean -C ./libft

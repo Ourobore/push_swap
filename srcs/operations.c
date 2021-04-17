@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:43:23 by user42            #+#    #+#             */
-/*   Updated: 2021/04/17 08:28:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/17 09:53:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	swap_list(t_int_list **head)
 	(*head)->next = tmp;
 	tmp->previous = *head;
 	(*head)->previous = NULL;
-	(*head)->last_elem = (*head)->next->last_elem;
+	(*head)->last_elem = tmp->last_elem;
 }
 
 void	push_list(t_int_list **head_1, t_int_list **head_2)
@@ -57,7 +57,8 @@ void	push_list(t_int_list **head_1, t_int_list **head_2)
 void	rotate_up(t_int_list **head, t_int_list *tmp, t_int_list *new_end)
 {
 	new_end = *head;
-	tmp = (*head)->last_elem;
+	while (tmp->next)
+		tmp = tmp->next;
 	*head = (*head)->next;
 	(*head)->previous = NULL;
 	tmp->next = new_end;
