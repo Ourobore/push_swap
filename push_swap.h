@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:49:50 by user42            #+#    #+#             */
-/*   Updated: 2021/04/17 08:57:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/17 09:05:08 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int						get_distance(t_int_list *head, t_int_list *target);
 int						args_are_numeric(char *argv[]);
 int						no_duplicates(t_int_list *a);
 t_int_list				*get_args(t_int_list *a, char *argv[]);
-t_int_list				atoi_arg(t_int_list *a, char *arg);
+t_int_list				*atoi_arg(t_int_list *a, char *arg);
 long int				get_number(long int *i, long int *sign, char *arg);
 
 /*
