@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 10:27:51 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 10:44:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/17 07:33:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			args_are_numeric(char *argv[])
 			if ((argv[i][j] < '0' || argv[i][j] > '9') && \
 				argv[i][j] != ' ' && argv[i][j] != '-')
 			{
-				ft_putendl_fd("Error", 1);
+				ft_putendl_fd("Error", 2);
 				exit(1);
 			}
 			j++;
@@ -48,7 +48,7 @@ t_int_list	*get_args(t_int_list *a, char *argv[])
 	}
 	if (!no_duplicates(a))
 	{
-		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Error", 2);
 		free_and_exit(a, NULL, 5);
 	}
 	return (a);
@@ -89,7 +89,7 @@ t_int_list	*atoi_arg(t_int_list *a, char *arg)
 		if ((arg[i] != ' ' && i != (int)ft_strlen(arg)) || \
 			sign * nb < INT_MIN || sign * nb > INT_MAX)
 		{
-			ft_putendl_fd("Error", 1);
+			ft_putendl_fd("Error", 2);
 			free_and_exit(a, NULL, 2);
 		}
 		new = allocate_new_elem(new);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:53:52 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 10:32:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/17 07:32:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		main(int argc, char *argv[])
 	b = NULL;
 	status = 0;
 	a = get_args(a, argv);
+	if (!a)
+		free_and_exit(a, b, status);
 	operations = read_operations();
 	exec_operations(&a, &b, operations);
 	sorted = is_sorted(a, 0);
@@ -78,7 +80,7 @@ void	exec_operations(t_int_list **a, t_int_list **b, t_list *operations)
 		error = call_operation(a, b, (char *)tmp->content, 0);
 		if (error)
 		{
-			ft_putendl_fd("Error", 1);
+			ft_putendl_fd("Error", 2);
 			ft_lstfree(operations);
 			free_and_exit(*a, *b, 5);
 		}

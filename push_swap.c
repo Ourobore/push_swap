@@ -6,71 +6,56 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:11:26 by user42            #+#    #+#             */
-/*   Updated: 2021/04/16 14:02:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/17 09:01:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	quicksort(t_int_list **a, t_int_list **b)
+int		sort_quantile(t_int_list *a, t_int_list *b, \
+					t_int_list **sorted_quantile, int **quantile)
 {
-	t_int_list	*pivot;
-	t_int_list	*last_b_head;
+	int	nb_quantile;
 
-	last_b_head = *b;
-	while (!is_sorted(*a, 0))
+	*sorted_quantile = NULL;
+	*sorted_quantile = copy_int_list(a);
+	if (!(*sorted_quantile) || \
+		get_length_int_list(*sorted_quantile) != get_length_int_list(a))
 	{
-		while (get_length_int_list(*a) > 1 && (*a)->data == get_min_max(*a, 0)->data)
-		{
-			call_operation(a, b, "pb", 1);
-			last_b_head = *b;
-		}
-		pivot = *a;
-		call_operation(a, b, "ra", 1);
-		while (*a != pivot)
-		{
-			if ((*a)->data < pivot->data)
-				call_operation(a, b, "pb", 1);
-			else
-				call_operation(a, b, "ra", 1);
-		}
-		while (*b != last_b_head)
-			call_operation(a, b, "pa", 1);
+		if (*sorted_quantile)
+			free_int_list(*sorted_quantile);
+		free_and_exit(a, b, 3);
 	}
-	while (*b)
-		call_operation(a, b, "pa", 1);
+	sort_small(sorted_quantile, &b, 0);
+	nb_quantile = (int)(get_length_int_list(a) * 0.015) + 4;
+	*quantile = get_quantile(*sorted_quantile, nb_quantile);
+	return (nb_quantile);
 }
 
-static void	sorting_hub(t_int_list **a, t_int_list **b)
+void	sorting_hub(t_int_list **a, t_int_list **b)
 {
 	t_int_list	*sorted_quantile;
 	int			*quantile;
-	int			nb_quantile = (int)(get_length_int_list(*a) * 0.015) + 4;
+	int			nb_quantile;
 
 	if (get_length_int_list(*a) < 30)
 		sort_small(a, b, 1);
 	else
 	{
-		sorted_quantile = copy_int_list(*a);
-		sort_small(&sorted_quantile, b, 0);
-		//if (!sorted_quantile || 
-		//	get_length_int_list(*a) != get_length_int_list(sorted_quantile))
-		//{
-		//	if (sorted_quantile)
-		//		free_int_list(sorted_quantile);
-		//	free_and_exit(*a, *b, 3);
-		//}
-		quantile = get_quantile(sorted_quantile, nb_quantile);
+		nb_quantile = sort_quantile(*a, *b, &sorted_quantile, &quantile);
 		if (quantile)
 			sort_big(a, b, quantile, nb_quantile);
 		else
-			ft_putendl_fd("Error", 1);
+		{
+			free_int_list(sorted_quantile);
+			exit(3);
+		}
 		free(quantile);
 		free_int_list(sorted_quantile);
 	}
 }
 
-int			main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
 	t_int_list	*a;
 	t_int_list	*b;

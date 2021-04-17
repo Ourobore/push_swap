@@ -4,8 +4,10 @@ SRCS	=	$(DIR)/int_list.c \
 			$(DIR)/quantile.c \
 			$(DIR)/args.c \
 			$(DIR)/operations.c \
+			$(DIR)/call_operation.c \
 			$(DIR)/sort_small.c \
 			$(DIR)/sort.c \
+			$(DIR)/quicksort.c \
 			$(DIR)/utils.c \
 			$(DIR)/free.c
 
